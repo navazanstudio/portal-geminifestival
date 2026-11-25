@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Informasi — Gemini Festival 2026 | GSA × HIMAPTIKA</title>
+
+  <!-- Google Fonts: Silkscreen, JetBrains Mono & Space Grotesk (Identik dengan Dashboard & Registrasi) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#1e1b4b',
+            inkDark: '#0f172a',
+            googleBlue: '#4285F4',
+            googleRed: '#EA4335',
+            googleYellow: '#FBBC05',
+            googleGreen: '#34A853',
+            warmYellow: '#FBBF24',
+            geminiPurple: '#8B5CF6',
+            geminiPink: '#EC4899',
+          },
+          fontFamily: {
+            pixel: ['"Silkscreen"', 'monospace'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* =====================================================================
+       1. RETRO PIXEL-ART NEO-BRUTALIST DESIGN TOKENS (IDENTIK DASHBOARD)
+    ===================================================================== */
+    :root {
+      --ink: #1e1b4b;
+      --ink-dark: #0f172a;
+      --sky-top: #64b3fb;
+      --sky-mid: #8cc9fc;
+      --sky-bottom: #c3e6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-bottom) 88%, #d4eeff 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .pixel-art {
+      image-rendering: pixelated;
+      shape-rendering: crispEdges;
+    }
+
+    /* Crisp Neo-Brutalist Surfaces */
+    .neo-card {
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0px var(--ink);
+      border-radius: 8px;
+    }
+
+    .neo-card-sm {
+      background: #ffffff;
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0px var(--ink);
+      border-radius: 7px;
+    }
+
+    .neo-btn {
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0px var(--ink);
+      border-radius: 6px;
+      transition: transform 0.13s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.13s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.15s ease;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .neo-btn:hover:not(:disabled) {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px var(--ink);
+    }
+
+    .neo-btn:active:not(:disabled) {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--ink);
+    }
+
+    /* Top Navbar Tab Buttons */
+    .nav-pill-item {
+      border: 2.5px solid var(--ink);
+      border-radius: 6px;
+      transition: transform 0.13s ease, box-shadow 0.13s ease, background-color 0.15s ease, color 0.15s ease;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .nav-pill-active {
+      background: #4285F4;
+      color: #ffffff;
+      box-shadow: 3px 3px 0px var(--ink);
+      transform: translate(-1px, -1px);
+    }
+
+    .nav-pill-idle {
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: 2px 2px 0px rgba(30, 27, 75, 0.22);
+    }
+
+    .nav-pill-idle:hover {
+      background: #eef5ff;
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px var(--ink);
+    }
+
+    .google-top-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 8px;
+      width: 100%;
+      border-bottom: 2.5px solid var(--ink);
+    }
+
+    .google-top-bar-thin {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 6px;
+      width: 100%;
+      border-bottom: 2px solid var(--ink);
+    }
+
+    /* =====================================================================
+       2. AMBIENT PIXEL WORLD ANIMATIONS
+    ===================================================================== */
+    @keyframes cloudDrift {
+      0% { transform: translate3d(-15vw, 0, 0); }
+      100% { transform: translate3d(115vw, 0, 0); }
+    }
+
+    @keyframes cloudDriftRev {
+      0% { transform: translate3d(112vw, 0, 0); }
+      100% { transform: translate3d(-18vw, 0, 0); }
+    }
+
+    @keyframes floatBob {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -7px, 0); }
+    }
+
+    @keyframes sparkleFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+      50% { transform: translate3d(0, -6px, 0) scale(1.07) rotate(4deg); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.75); }
+    }
+
+    @keyframes dinoIdle {
+      0%, 84%, 100% { transform: translate3d(0, 0, 0) scaleY(1); }
+      90% { transform: translate3d(0, -7px, 0) scaleY(1.05); }
+      95% { transform: translate3d(0, 0, 0) scaleY(0.96); }
+    }
+
+    @keyframes dinoJump {
+      0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      35% { transform: translate3d(0, -26px, 0) rotate(-6deg); }
+      65% { transform: translate3d(0, -22px, 0) rotate(5deg); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translate3d(0, 12px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .animate-cloud-1 { animation: cloudDrift 64s linear infinite; }
+    .animate-cloud-2 { animation: cloudDrift 80s linear infinite; animation-delay: -30s; }
+    .animate-cloud-3 { animation: cloudDriftRev 72s linear infinite; animation-delay: -20s; }
+    .animate-float-slow { animation: floatBob 4.5s ease-in-out infinite; }
+    .animate-sparkle { animation: sparkleFloat 3.6s ease-in-out infinite; }
+    .animate-twinkle { animation: twinkle 2.4s steps(3) infinite; }
+    .animate-dino { animation: dinoIdle 4.6s ease-in-out infinite; }
+    .dino-jumping { animation: dinoJump 0.48s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+    .section-enter { animation: fadeSlideUp 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+    .pixel-grass-strip {
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #44A938 0px, #44A938 14px,
+          #52BE44 14px, #52BE44 28px,
+          #3D9A32 28px, #3D9A32 42px
+        );
+      border-top: 4px solid #25681e;
+      box-shadow: inset 0 8px 0 #5CCB4D;
+    }
+
+    .pixel-progress-bar {
+      transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Custom Retro Scrollbar */
+    .retro-scroll::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .retro-scroll::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 4px;
+    }
+    .retro-scroll::-webkit-scrollbar-thumb {
+      background: #4285F4;
+      border: 2px solid #1e1b4b;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-warmYellow selection:text-ink">
+  <!-- =====================================================================
+       AMBIENT PIXEL SKY, DRIFTING CLOUDS, VOXEL TREES & GRASS GROUND
+  ===================================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
+
+    <!-- Drifting Pixel Clouds -->
+    <svg class="pixel-art animate-cloud-1 absolute top-6 left-0 w-36 sm:w-48 opacity-90" viewBox="0 0 48 20" fill="none">
+      <rect x="12" y="2" width="18" height="6" fill="#FFFFFF" />
+      <rect x="6" y="6" width="32" height="6" fill="#FFFFFF" />
+      <rect x="2" y="10" width="44" height="6" fill="#FFFFFF" />
+      <rect x="6" y="16" width="36" height="2" fill="#DCEEFF" />
+    </svg>
+
+    <svg class="pixel-art animate-cloud-2 absolute top-28 left-0 w-28 sm:w-40 opacity-80" viewBox="0 0 40 16" fill="none">
+      <rect x="10" y="2" width="16" height="4" fill="#FFFFFF" />
+      <rect x="4" y="6" width="30" height="6" fill="#FFFFFF" />
+      <rect x="2" y="10" width="36" height="4" fill="#FFFFFF" />
+    </svg>
+
+    <svg class="pixel-art animate-cloud-3 absolute top-52 left-0 w-32 sm:w-44 opacity-75 hidden sm:block" viewBox="0 0 48 20" fill="none">
+      <rect x="14" y="2" width="16" height="6" fill="#FFFFFF" />
+      <rect x="6" y="8" width="34" height="6" fill="#FFFFFF" />
+      <rect x="2" y="12" width="42" height="5" fill="#FFFFFF" />
+    </svg>
+
+    <!-- Floating Pixel Cubes -->
+    <div class="animate-float-slow absolute top-20 left-[3%] w-3.5 h-3.5 bg-warmYellow border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] hidden xl:block"></div>
+    <div class="animate-float-slow absolute top-16 right-[4%] w-3.5 h-3.5 bg-googleRed border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] hidden xl:block"></div>
+
+    <!-- Decorative Voxel Trees -->
+    <svg class="pixel-art absolute bottom-8 -left-4 sm:left-2 w-24 sm:w-28 h-auto opacity-85" viewBox="0 0 32 44" fill="none">
+      <rect x="13" y="26" width="6" height="18" fill="#7C4A27" />
+      <rect x="17" y="26" width="2" height="18" fill="#5D351A" />
+      <rect x="8" y="4" width="16" height="6" fill="#4EB83E" />
+      <rect x="4" y="10" width="24" height="10" fill="#3B9E2E" />
+      <rect x="6" y="20" width="20" height="8" fill="#2E8324" />
+      <rect x="10" y="6" width="6" height="4" fill="#6FD45E" />
+    </svg>
+
+    <svg class="pixel-art absolute bottom-8 -right-4 sm:right-2 w-24 sm:w-32 h-auto opacity-85" viewBox="0 0 40 48" fill="none">
+      <rect x="17" y="28" width="6" height="20" fill="#7C4A27" />
+      <rect x="21" y="28" width="2" height="20" fill="#5D351A" />
+      <rect x="10" y="4" width="20" height="8" fill="#52BE44" />
+      <rect x="4" y="12" width="32" height="10" fill="#3B9E2E" />
+      <rect x="8" y="22" width="24" height="8" fill="#2B7E21" />
+      <rect x="14" y="6" width="8" height="4" fill="#75DC63" />
+    </svg>
+
+    <!-- Pixel Grass Ground Strip -->
+    <div class="pixel-grass-strip absolute bottom-0 left-0 right-0 h-9 sm:h-11">
+      <div class="absolute top-2 left-[20%] w-2 h-2 bg-warmYellow"></div>
+      <div class="absolute top-3.5 left-[48%] w-2 h-2 bg-white"></div>
+      <div class="absolute top-2 left-[76%] w-2 h-2 bg-warmYellow"></div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas (for 17/17 Rules Completed Easter Egg) -->
+  <canvas id="confetti-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[65]"></canvas>
+
+  <!-- Interactive Pixel Dino Mascot (Bottom-Right) -->
+  <button
+    id="dino-mascot"
+    type="button"
+    title="Klik Dino Gemini!"
+    aria-label="Maskot Dino Gemini Festival"
+    class="fixed bottom-3 right-3 sm:bottom-4 sm:right-5 z-20 cursor-pointer group focus:outline-none"
+  >
+    <span class="hidden sm:block absolute -top-9 right-0 whitespace-nowrap bg-white border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] px-2.5 py-1 rounded text-[10px] font-pixel text-ink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+      SIAP ESCAPE ROOM? ★
+    </span>
+    <svg id="dino-svg" class="pixel-art animate-dino w-10 h-10 sm:w-12 sm:h-12 drop-shadow-[3px_3px_0px_rgba(30,27,75,0.45)]" viewBox="0 0 20 20" fill="none">
+      <rect x="8" y="1" width="9" height="8" fill="#1e1b4b" />
+      <rect x="6" y="5" width="9" height="9" fill="#1e1b4b" />
+      <rect x="2" y="9" width="6" height="5" fill="#1e1b4b" />
+      <rect x="6" y="14" width="3" height="5" fill="#1e1b4b" />
+      <rect x="11" y="14" width="3" height="5" fill="#1e1b4b" />
+      <rect x="9" y="2" width="7" height="6" fill="#FFFFFF" />
+      <rect x="7" y="6" width="7" height="8" fill="#FFFFFF" />
+      <rect x="3" y="10" width="4" height="3" fill="#FFFFFF" />
+      <rect x="7" y="14" width="1.5" height="4" fill="#FFFFFF" />
+      <rect x="12" y="14" width="1.5" height="4" fill="#FFFFFF" />
+      <rect x="13" y="3" width="2" height="2" fill="#1e1b4b" />
+      <rect x="11" y="9" width="3" height="3" fill="#C7D2FE" />
+    </svg>
+  </button>
+
+  <!-- =====================================================================
+       MAIN PORTAL CONTAINER (TOP NAVBAR + CONTENT BELOW)
+  ===================================================================== -->
+  <div class="relative z-10 min-h-screen max-w-5xl mx-auto px-3 sm:px-6 pt-4 sm:pt-6 pb-20 sm:pb-24">
+    <!-- TOP NEO-BRUTALIST NAVBAR -->
+    <header class="neo-card mb-6 overflow-hidden sticky top-3 z-30">
+      <div class="google-top-bar">
+        <div class="bg-googleBlue"></div>
+        <div class="bg-googleRed"></div>
+        <div class="bg-googleYellow"></div>
+        <div class="bg-googleGreen"></div>
+      </div>
+
+      <div class="px-4 sm:px-5 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <!-- Brand Logo + Title -->
+        <div class="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            data-goto-tab="beranda"
+            class="flex items-center gap-3 text-left cursor-pointer focus:outline-none"
+          >
+            <div class="w-9 h-9 bg-indigo-50 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] rounded flex items-center justify-center shrink-0">
+              <svg class="pixel-art w-6 h-6 animate-sparkle" viewBox="0 0 16 16" fill="none">
+                <rect x="7" y="1" width="2" height="14" fill="#4285F4" />
+                <rect x="1" y="7" width="14" height="2" fill="#8B5CF6" />
+                <rect x="5" y="5" width="6" height="6" fill="#A855F7" />
+                <rect x="6" y="6" width="4" height="4" fill="#EC4899" />
+                <rect x="7" y="7" width="2" height="2" fill="#FFFFFF" />
+              </svg>
+            </div>
+            <div>
+              <h1 class="font-pixel text-xs sm:text-sm text-ink leading-tight">
+                GEMINI <span class="text-googleBlue">FESTIVAL</span>
+              </h1>
+              <p class="font-mono font-bold text-[10px] text-slate-500 leading-tight mt-0.5">
+                GSA × HIMAPTIKA
+              </p>
+            </div>
+          </button>
+
+          <!-- Mobile Compact Date Chip -->
+          <span class="md:hidden font-mono font-extrabold text-[10px] px-2.5 py-1 bg-warmYellow border-2 border-ink rounded text-ink shrink-0">
+            29 NOV 2026
+          </span>
+        </div>
+
+        <!-- Horizontal Navbar Menu (3 Items Only) -->
+        <nav aria-label="Navigasi Portal Informasi" class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0 retro-scroll">
+          <button
+            type="button"
+            data-tab="beranda"
+            class="nav-tab nav-pill-item nav-pill-active px-3 sm:px-3.5 py-2 font-pixel text-[10.5px] sm:text-[11px] inline-flex items-center gap-1.5"
+          >
+            <span>🏠</span>
+            <span>HOME</span>
+          </button>
+
+          <button
+            type="button"
+            data-tab="rundown"
+            class="nav-tab nav-pill-item nav-pill-idle px-3 sm:px-3.5 py-2 font-pixel text-[10.5px] sm:text-[11px] inline-flex items-center gap-1.5"
+          >
+            <span>⏰</span>
+            <span>RUNDOWN</span>
+          </button>
+
+          <button
+            type="button"
+            data-tab="regulasi"
+            class="nav-tab nav-pill-item nav-pill-idle px-3 sm:px-3.5 py-2 font-pixel text-[10.5px] sm:text-[11px] inline-flex items-center gap-1.5"
+          >
+            <span>📜</span>
+            <span>REGULASI</span>
+            <span id="nav-rules-badge" class="font-mono text-[9.5px] px-1.5 py-0.5 rounded bg-warmYellow text-ink font-extrabold border border-ink/30">
+              17
+            </span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA BELOW NAVBAR -->
+    <main>
+      <!-- =============================================================
+           TAB 1: HOME (RINGKAS, TANPA ALUR & TANPA SPOILER MISI)
+      ============================================================== -->
+      <section id="view-beranda" class="section-enter space-y-5 sm:space-y-6">
+        <!-- Hero Card -->
+        <div class="neo-card overflow-hidden">
+          <div class="google-top-bar">
+            <div class="bg-googleBlue"></div>
+            <div class="bg-googleRed"></div>
+            <div class="bg-googleYellow"></div>
+            <div class="bg-googleGreen"></div>
+          </div>
+
+          <div class="p-5 sm:p-8 bg-gradient-to-br from-blue-50/70 via-white to-purple-50/75">
+            <!-- Collaboration Eyebrow & 7 Dimensions Squares -->
+            <div class="flex flex-wrap items-center justify-between gap-2.5 pb-4 border-b-2 border-dashed border-slate-200">
+              <span class="font-mono font-extrabold text-[11px] sm:text-xs px-3 py-1 bg-ink text-white rounded border-2 border-ink shadow-[2px_2px_0px_#4285F4]">
+                GOOGLE STUDENT AMBASSADOR × HIMAPTIKA
+              </span>
+
+              <div class="flex items-center gap-1" title="7 Dimensions of Productivity">
+                <span class="w-3 h-3 bg-[#4285F4] border-[1.5px] border-ink inline-block"></span>
+                <span class="w-3 h-3 bg-[#EA4335] border-[1.5px] border-ink inline-block"></span>
+                <span class="w-3 h-3 bg-[#FBBC05] border-[1.5px] border-ink inline-block"></span>
+                <span class="w-3 h-3 bg-[#34A853] border-[1.5px] border-ink inline-block"></span>
+                <span class="w-3 h-3 bg-[#8B5CF6] border-[1.5px] border-ink inline-block"></span>
+                <span class="w-3 h-3 bg-[#F97316] border-[1.5px] border-ink inline-block"></span>
+                <span class="w-3 h-3 bg-[#14B8A6] border-[1.5px] border-ink inline-block"></span>
+              </div>
+            </div>
+
+            <!-- Event Title + Theme + Sparkle -->
+            <div class="mt-5 flex flex-col md:flex-row md:items-center justify-between gap-5">
+              <div class="min-w-0 flex-1">
+                <h2 class="font-pixel text-3xl sm:text-5xl leading-[1.08] tracking-tight">
+                  <span class="text-googleBlue drop-shadow-[3px_3px_0px_rgba(30,27,75,0.16)]">GEMINI</span>
+                  <span class="text-ink">FESTIVAL</span>
+                </h2>
+                <div class="mt-3">
+                  <p class="font-bold text-googleBlue text-base sm:text-xl leading-snug">
+                    The Gemini Multiverse:
+                  </p>
+                  <p class="font-bold text-ink text-lg sm:text-2xl leading-snug inline-block pb-1">
+                    7 Dimensions of Productivity
+                    <span class="block h-[5px] w-full bg-warmYellow mt-1 rounded-sm"></span>
+                  </p>
+                </div>
+                <p class="mt-4 text-sm sm:text-[15px] text-slate-700 leading-relaxed max-w-2xl">
+                  <strong>Gemini Festival</strong> adalah event kolaborasi resmi antara <strong>Google Student Ambassador (GSA)</strong> dan <strong>HIMAPTIKA</strong>. Acara ini menghadirkan pengalaman seru dan kolaboratif dalam mengeksplorasi produktivitas bersama AI melalui rangkaian tantangan interaktif.
+                </p>
+              </div>
+
+              <!-- Pixel Gemini Sparkle -->
+              <div class="shrink-0 hidden sm:flex items-center justify-center relative w-32 h-32 select-none" aria-hidden="true">
+                <svg class="pixel-art animate-twinkle absolute top-1 left-2 w-6 h-6" viewBox="0 0 12 12" fill="none">
+                  <rect x="5" y="1" width="2" height="10" fill="#A855F7" />
+                  <rect x="1" y="5" width="10" height="2" fill="#EC4899" />
+                </svg>
+                <svg class="pixel-art animate-sparkle w-24 h-24" viewBox="0 0 24 24" fill="none">
+                  <defs>
+                    <linearGradient id="portalSparkGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#4285F4" />
+                      <stop offset="50%" stop-color="#8B5CF6" />
+                      <stop offset="100%" stop-color="#EC4899" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="11" y="1" width="2" height="22" fill="url(#portalSparkGrad)" />
+                  <rect x="9" y="5" width="6" height="14" fill="url(#portalSparkGrad)" />
+                  <rect x="1" y="11" width="22" height="2" fill="url(#portalSparkGrad)" />
+                  <rect x="5" y="9" width="14" height="6" fill="url(#portalSparkGrad)" />
+                  <rect x="7" y="7" width="10" height="10" fill="url(#portalSparkGrad)" />
+                  <rect x="10" y="10" width="4" height="4" fill="#F5D0FE" opacity="0.7" />
+                </svg>
+                <svg class="pixel-art animate-twinkle absolute bottom-2 right-2 w-6 h-6" style="animation-delay: -1s;" viewBox="0 0 12 12" fill="none">
+                  <rect x="5" y="1" width="2" height="10" fill="#4285F4" />
+                  <rect x="1" y="5" width="10" height="2" fill="#8B5CF6" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Event Key Details Grid -->
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="neo-card-sm bg-warmYellow/90 p-3.5">
+                <p class="font-mono font-bold text-[10px] uppercase text-ink/75">TANGGAL</p>
+                <p class="font-pixel text-xs sm:text-sm text-ink mt-1">MINGGU, 29 NOV 2026</p>
+              </div>
+              <div class="neo-card-sm bg-white p-3.5">
+                <p class="font-mono font-bold text-[10px] uppercase text-slate-500">WAKTU</p>
+                <p class="font-pixel text-xs sm:text-sm text-ink mt-1">07.30 – 14.30 WIB</p>
+              </div>
+              <div class="neo-card-sm bg-white p-3.5">
+                <p class="font-mono font-bold text-[10px] uppercase text-slate-500">LOKASI</p>
+                <p class="font-pixel text-xs sm:text-sm text-ink mt-1">AULA LT. 4, GEDUNG FTIK</p>
+              </div>
+            </div>
+
+            <!-- Quick Navigation Buttons -->
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                data-goto-tab="rundown"
+                class="neo-btn bg-googleBlue hover:bg-blue-600 text-white font-pixel text-xs px-4 py-3 inline-flex items-center gap-2"
+              >
+                <span>⏰ LIHAT RUNDOWN</span>
+                <span>→</span>
+              </button>
+              <button
+                type="button"
+                data-goto-tab="regulasi"
+                class="neo-btn bg-warmYellow hover:bg-amber-300 text-ink font-pixel text-xs px-4 py-3 inline-flex items-center gap-2"
+              >
+                <span>📜 BACA REGULASI</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefit Peserta Strip -->
+        <div class="neo-card p-5 sm:p-6 bg-gradient-to-r from-emerald-50/70 via-white to-amber-50/70">
+          <h3 class="font-pixel text-xs sm:text-sm text-ink mb-3">🎁 YANG KAMU DAPATKAN</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded">✓ E-Sertifikat Peserta</span>
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-warmYellow border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded">✓ Uang Tunai + Sertifikat Juara 1</span>
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded">✓ Kelas Dicoding Gratis (600K)</span>
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded">✓ Minigift Menarik</span>
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded">✓ Konsumsi</span>
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded">✓ Pengalaman Menyenangkan</span>
+            <span class="font-mono font-bold text-[11px] px-3 py-1.5 bg-emerald-100 border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded text-emerald-900">✓ Free Biaya Registrasi</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           TAB 2: RUNDOWN SINGKAT & PRESISI (SESUAI JADWAL RESMI)
+      ============================================================== -->
+      <section id="view-rundown" class="hidden section-enter space-y-5">
+        <div class="neo-card overflow-hidden">
+          <div class="google-top-bar">
+            <div class="bg-googleBlue"></div>
+            <div class="bg-googleRed"></div>
+            <div class="bg-googleYellow"></div>
+            <div class="bg-googleGreen"></div>
+          </div>
+
+          <div class="p-5 sm:p-7">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b-2 border-dashed border-slate-200">
+              <div>
+                <span class="inline-block font-mono font-bold text-[10px] uppercase tracking-widest px-2.5 py-0.5 bg-blue-50 border-2 border-ink rounded text-googleBlue mb-1.5">
+                  MINGGU, 29 NOVEMBER 2026
+                </span>
+                <h2 class="font-pixel text-lg sm:text-2xl text-ink">
+                  RUNDOWN <span class="text-googleBlue">GEMINI FESTIVAL</span>
+                </h2>
+              </div>
+              <span class="font-mono font-bold text-xs px-3 py-1.5 bg-warmYellow border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded text-ink">
+                07.30 – 14.30 WIB
+              </span>
+            </div>
+
+            <!-- Compact Rundown List (Exact Time & Activity Title Only) -->
+            <div id="rundown-timeline" class="mt-5 space-y-2.5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =============================================================
+           TAB 3: 17 REGULASI RESMI PESERTA GEMINI FESTIVAL
+      ============================================================== -->
+      <section id="view-regulasi" class="hidden section-enter space-y-5">
+        <div class="neo-card overflow-hidden">
+          <div class="google-top-bar">
+            <div class="bg-googleBlue"></div>
+            <div class="bg-googleRed"></div>
+            <div class="bg-googleYellow"></div>
+            <div class="bg-googleGreen"></div>
+          </div>
+
+          <div class="p-5 sm:p-7">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b-2 border-dashed border-slate-200">
+              <div>
+                <span class="inline-block font-mono font-bold text-[10px] uppercase tracking-widest px-2.5 py-0.5 bg-red-50 border-2 border-ink rounded text-googleRed mb-2">
+                  WAJIB DIPATUHI SELURUH PESERTA
+                </span>
+                <h2 class="font-pixel text-lg sm:text-2xl text-ink">
+                  REGULASI <span class="text-googleBlue">GEMINI FESTIVAL</span>
+                </h2>
+              </div>
+
+              <!-- Compact Checklist Progress -->
+              <div class="neo-card-sm bg-emerald-50/80 px-4 py-2.5 shrink-0 min-w-[200px]">
+                <div class="flex items-center justify-between font-mono text-xs font-bold text-ink mb-1.5">
+                  <span>CHECKLIST BACA</span>
+                  <span id="rules-progress-text" class="text-emerald-700">0 / 17</span>
+                </div>
+                <div class="w-full h-2.5 bg-white border-2 border-ink rounded-sm overflow-hidden">
+                  <div id="rules-progress-bar" class="pixel-progress-bar h-full bg-googleGreen" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-2">
+              <p class="text-xs text-slate-600 font-medium">
+                Centang poin regulasi yang sudah kamu pahami sebelum hari H.
+              </p>
+              <button
+                type="button"
+                id="check-all-rules-btn"
+                class="font-mono font-bold text-xs text-googleBlue hover:underline cursor-pointer"
+              >
+                ✓ Tandai Semua Sudah Dibaca
+              </button>
+            </div>
+
+            <!-- 17 Rules List -->
+            <div id="rules-list-container" class="mt-4 space-y-2.5"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Compact Pixel Footer -->
+    <footer class="mt-8 text-center">
+      <p class="inline-block bg-white/90 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] px-4 py-1.5 rounded text-xs font-mono font-bold text-ink">
+        © 2026 GEMINI FESTIVAL • GOOGLE STUDENT AMBASSADOR × HIMAPTIKA
+      </p>
+    </footer>
+  </div>
+
+  <!-- Non-blocking Pixel Toast Container -->
+  <div
+    id="toast-container"
+    aria-live="polite"
+    class="fixed top-4 right-4 z-[80] flex flex-col gap-2 max-w-[92vw] sm:max-w-sm pointer-events-none"
+  ></div>
+
+  <!-- =====================================================================
+       APPLICATION JAVASCRIPT
+       - Top Navbar Tab Routing (Home, Rundown, Regulasi)
+       - Compact Verbatim Rundown Renderer
+       - Interactive 17-Rule Read Checklist + Retro Audio & Confetti
+  ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ===================================================================
+         1. OFFICIAL EVENT DATA (EXACT VERBATIM RUNDOWN & 17 REGULASI)
+      =================================================================== */
+      const RUNDOWN_DATA = [
+        { time: '07.30 – 08.00', title: 'Registrasi' },
+        { time: '08.00 – 08.05', title: 'Pembukaan' },
+        { time: '08.05 – 08.10', title: 'Indonesia Raya' },
+        { time: '08.10 – 08.15', title: 'Mars HMP' },
+        { time: '08.15 – 08.20', title: 'Sambutan Kahima' },
+        { time: '08.20 – 08.30', title: 'Pembacaan Regulasi' },
+        { time: '08.30 – 08.35', title: 'Kumpul Per Kelompok' },
+        { time: '08.35 – 13.15', title: 'Escape Room', highlight: true },
+        { time: '13.15 – 14.00', title: 'Checkpoint + Ishoma' },
+        { time: '14.00 – 14.20', title: 'Pengumuman – Pengumuman Para Pemenang', highlight: true },
+        { time: '14.20 – 14.25', title: 'Penutupan' },
+        { time: '14.25 – 14.30', title: 'Foto Bersama' },
+      ];
+
+      const RULES_DATA = [
+        { no: 1, text: 'Games ini terdiri dari kegiatan Escape Room, di mana peserta akan dibagi secara berkelompok dan setiap kelompok diminta untuk menyelesaikan misi di beberapa ruangan.' },
+        { no: 2, text: 'Setiap kelompok akan mendapatkan Mission Diary untuk mengumpulkan misi-misi yang telah diselesaikan per kelompok.' },
+        { no: 3, text: 'Setiap kelompok akan mendapatkan Misi Rahasia yang ketentuannya akan tertera di dalam Mission Diary masing-masing.' },
+        { no: 4, text: 'Setiap misi memiliki poin tersendiri yang dinilai oleh masing-masing GSA.' },
+        { no: 5, text: 'Pemenang Gemini Festival dinilai dari format yang sudah ditentukan oleh panitia.' },
+        { no: 6, text: 'Jika salah satu peserta berhalangan hadir, maka peserta tersebut diimbau untuk mencari pengganti dan wajib melapor ke panitia maksimal H-1 acara.' },
+        { no: 7, text: 'Peserta wajib datang tepat waktu, jika tidak akan ada pengurangan poin untuk kelompoknya.' },
+        { no: 8, text: 'Peserta diwajibkan menyelesaikan games di saat waktunya sudah habis, tuntas atau tidak.' },
+        { no: 9, text: 'Peserta dilarang menyebarkan informasi games dari ruangan ke kelompok lain.' },
+        { no: 10, text: 'Peserta dilarang membantu peserta dari kelompok lain.' },
+        { no: 11, text: 'Peserta dilarang membawa sajam, narkoba, dan membuat konten AI berunsur SARA.' },
+        { no: 12, text: 'Peserta wajib menunjukkan E-Tiket pendaftaran (digital atau cetak) saat registrasi ulang serta mengenakan pakaian yang rapi, sopan, dan nyaman untuk bergerak.' },
+        { no: 13, text: 'Setiap peserta wajib membawa perangkat (HP/laptop) dengan baterai penuh (disarankan membawa powerbank/charger), koneksi internet pribadi, serta sudah login akun Google/Gemini sebelum acara dimulai.' },
+        { no: 14, text: 'Setiap kelompok wajib menjaga Mission Diary masing-masing agar tidak hilang atau rusak, serta dilarang merusak, mencoret, atau memindahkan fasilitas dan properti ruangan Gedung FTIK.' },
+        { no: 15, text: 'Peserta wajib menjaga ketenangan di area koridor agar tidak mengganggu kelompok lain dan hanya berpindah ruangan sesuai arahan panitia.' },
+        { no: 16, text: 'Peserta wajib mengikuti seluruh rangkaian acara hingga sesi penutupan untuk berhak mendapatkan E-Sertifikat.' },
+        { no: 17, text: 'Pelanggaran terhadap regulasi dapat dikenakan sanksi mulai dari pengurangan poin hingga diskualifikasi, dan seluruh keputusan penilaian panitia serta GSA bersifat mutlak.' },
+      ];
+
+      /* ===================================================================
+         2. STATE & DOM REFERENCES
+      =================================================================== */
+      const STORAGE_RULES_KEY = 'gf26_portal_read_rules_v3';
+      let readRulesSet = new Set();
+      let confettiAnimId = null;
+
+      const navTabs = document.querySelectorAll('.nav-tab');
+      const gotoButtons = document.querySelectorAll('[data-goto-tab]');
+      const sections = {
+        beranda: document.getElementById('view-beranda'),
+        rundown: document.getElementById('view-rundown'),
+        regulasi: document.getElementById('view-regulasi'),
+      };
+
+      const navRulesBadge = document.getElementById('nav-rules-badge');
+      const rundownTimeline = document.getElementById('rundown-timeline');
+      const rulesListContainer = document.getElementById('rules-list-container');
+      const rulesProgressText = document.getElementById('rules-progress-text');
+      const rulesProgressBar = document.getElementById('rules-progress-bar');
+      const checkAllRulesBtn = document.getElementById('check-all-rules-btn');
+
+      const toastContainer = document.getElementById('toast-container');
+      const confettiCanvas = document.getElementById('confetti-canvas');
+      const dinoMascot = document.getElementById('dino-mascot');
+      const dinoSvg = document.getElementById('dino-svg');
+
+      /* ===================================================================
+         3. UTILITIES, TOASTS, RETRO AUDIO & CONFETTI
+      =================================================================== */
+      function showToast(message, type = 'info') {
+        const styles = {
+          success: 'bg-emerald-50 border-emerald-700 text-emerald-950',
+          info: 'bg-white border-ink text-ink',
+        };
+        const icons = { success: '✓', info: '★' };
+
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto border-[2.5px] shadow-[4px_4px_0px_#1e1b4b] rounded-md px-3.5 py-2.5 flex items-center gap-2.5 text-xs sm:text-sm font-bold transition-all duration-300 translate-x-6 opacity-0 ${styles[type] || styles.info}`;
+        toast.innerHTML = `
+          <span class="w-6 h-6 shrink-0 rounded border-2 border-ink bg-warmYellow text-ink font-pixel text-xs flex items-center justify-center">${icons[type] || '★'}</span>
+          <span class="leading-snug"></span>
+        `;
+        toast.querySelector('span:last-child').textContent = message;
+        toastContainer.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.remove('translate-x-6', 'opacity-0'));
+
+        setTimeout(() => {
+          toast.classList.add('translate-x-6', 'opacity-0');
+          setTimeout(() => toast.remove(), 320);
+        }, 3200);
+      }
+
+      function playRetroSound(type) {
+        try {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return;
+          const ctx = new AudioCtx();
+          const now = ctx.currentTime;
+
+          if (type === 'fanfare') {
+            [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(freq, now + i * 0.065);
+              gain.gain.setValueAtTime(0.03, now + i * 0.065);
+              gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.065 + 0.18);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(now + i * 0.065);
+              osc.stop(now + i * 0.065 + 0.19);
+            });
+          } else if (type === 'dino') {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(460, now);
+            osc.frequency.exponentialRampToValueAtTime(840, now + 0.11);
+            gain.gain.setValueAtTime(0.022, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.13);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.14);
+          }
+
+          setTimeout(() => {
+            if (ctx.state !== 'closed') ctx.close().catch(() => {});
+          }, 700);
+        } catch (_) {}
+      }
+
+      function launchPixelConfetti() {
+        if (confettiAnimId) cancelAnimationFrame(confettiAnimId);
+        const ctx = confettiCanvas.getContext('2d');
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        confettiCanvas.width = w * dpr;
+        confettiCanvas.height = h * dpr;
+        ctx.scale(dpr, dpr);
+
+        const palette = ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8B5CF6', '#EC4899', '#FFFFFF'];
+        const particles = Array.from({ length: w < 640 ? 40 : 65 }, () => ({
+          x: w * 0.5 + (Math.random() - 0.5) * 260,
+          y: h * 0.25 + (Math.random() - 0.5) * 80,
+          vx: (Math.random() - 0.5) * 10,
+          vy: -Math.random() * 8 - 2,
+          size: Math.floor(Math.random() * 5) + 5,
+          color: palette[Math.floor(Math.random() * palette.length)],
+          rot: Math.random() * Math.PI * 2,
+          vRot: (Math.random() - 0.5) * 0.2,
+          life: 1,
+          decay: 0.01 + Math.random() * 0.008,
+        }));
+
+        function tick() {
+          ctx.clearRect(0, 0, w, h);
+          let alive = 0;
+          for (const p of particles) {
+            if (p.life <= 0) continue;
+            alive++;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.24;
+            p.rot += p.vRot;
+            p.life -= p.decay;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.life);
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.strokeStyle = '#1e1b4b';
+            ctx.lineWidth = 1.2;
+            ctx.strokeRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.restore();
+          }
+          if (alive > 0) confettiAnimId = requestAnimationFrame(tick);
+          else {
+            ctx.clearRect(0, 0, w, h);
+            confettiAnimId = null;
+          }
+        }
+        tick();
+      }
+
+      /* ===================================================================
+         4. TOP NAVBAR TAB SWITCHER
+      =================================================================== */
+      function switchTab(tabKey) {
+        Object.entries(sections).forEach(([key, el]) => {
+          const active = key === tabKey;
+          el.classList.toggle('hidden', !active);
+          if (active) {
+            el.classList.remove('section-enter');
+            void el.offsetWidth;
+            el.classList.add('section-enter');
+          }
+        });
+
+        navTabs.forEach((btn) => {
+          const isMatch = btn.dataset.tab === tabKey;
+          btn.classList.toggle('nav-pill-active', isMatch);
+          btn.classList.toggle('nav-pill-idle', !isMatch);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      navTabs.forEach((btn) => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+      gotoButtons.forEach((btn) => btn.addEventListener('click', () => switchTab(btn.dataset.gotoTab)));
+
+      /* ===================================================================
+         5. COMPACT RUNDOWN RENDERER (EXACT TIME & TITLE ONLY)
+      =================================================================== */
+      function renderRundown() {
+        const stripeColors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+
+        rundownTimeline.innerHTML = RUNDOWN_DATA.map((item, idx) => {
+          const stripe = stripeColors[idx % stripeColors.length];
+          const bgCls = item.highlight
+            ? 'bg-gradient-to-r from-amber-50/90 via-white to-blue-50/75'
+            : 'bg-white';
+
+          return `
+            <div class="neo-card-sm ${bgCls} px-3.5 sm:px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 relative overflow-hidden">
+              <div class="absolute left-0 top-0 bottom-0 w-1.5" style="background-color:${stripe};"></div>
+
+              <span class="ml-2 inline-block self-start sm:self-center font-mono font-extrabold text-xs sm:text-sm px-2.5 py-1 bg-ink text-warmYellow rounded shadow-[2px_2px_0px_#4285F4] shrink-0 min-w-[138px] text-center">
+                ${item.time}
+              </span>
+
+              <p class="ml-2 sm:ml-0 font-bold text-sm sm:text-base text-ink leading-snug flex-1">
+                ${item.title}
+              </p>
+            </div>
+          `;
+        }).join('');
+      }
+
+      /* ===================================================================
+         6. 17 REGULASI + INTERACTIVE READ CHECKLIST
+      =================================================================== */
+      function loadReadRules() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_RULES_KEY) || '[]');
+          if (Array.isArray(saved)) {
+            const validIds = new Set(RULES_DATA.map((r) => r.no));
+            readRulesSet = new Set(saved.filter((id) => validIds.has(id)));
+          }
+        } catch (_) {}
+      }
+
+      function saveReadRules() {
+        try {
+          localStorage.setItem(STORAGE_RULES_KEY, JSON.stringify([...readRulesSet]));
+        } catch (_) {}
+      }
+
+      function updateRulesProgressUI() {
+        const count = readRulesSet.size;
+        const total = RULES_DATA.length;
+        const pct = Math.round((count / total) * 100);
+
+        rulesProgressText.textContent = `${count} / ${total}`;
+        rulesProgressBar.style.width = `${pct}%`;
+
+        if (count === total) {
+          navRulesBadge.textContent = '✓';
+          navRulesBadge.classList.remove('bg-warmYellow', 'text-ink');
+          navRulesBadge.classList.add('bg-googleGreen', 'text-white');
+        } else {
+          navRulesBadge.textContent = `${total}`;
+          navRulesBadge.classList.add('bg-warmYellow', 'text-ink');
+          navRulesBadge.classList.remove('bg-googleGreen', 'text-white');
+        }
+      }
+
+      function renderRulesList() {
+        const numColors = [
+          'bg-googleBlue text-white',
+          'bg-googleRed text-white',
+          'bg-warmYellow text-ink',
+          'bg-googleGreen text-white',
+        ];
+
+        rulesListContainer.innerHTML = RULES_DATA.map((r, idx) => {
+          const checked = readRulesSet.has(r.no);
+          const numCls = numColors[idx % numColors.length];
+          return `
+            <label class="neo-card-sm p-3.5 flex items-start gap-3 cursor-pointer transition-colors ${
+              checked ? 'bg-emerald-50/75 border-emerald-700' : 'bg-white hover:bg-slate-50'
+            }">
+              <input
+                type="checkbox"
+                data-rule-check="${r.no}"
+                ${checked ? 'checked' : ''}
+                class="mt-1 w-5 h-5 accent-googleGreen cursor-pointer shrink-0"
+              />
+              <span class="w-7 h-7 shrink-0 rounded border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-[11px] ${numCls}">
+                ${r.no}
+              </span>
+              <span class="text-xs sm:text-sm font-semibold text-ink leading-relaxed pt-0.5 flex-1">
+                ${r.text}
+              </span>
+            </label>
+          `;
+        }).join('');
+
+        updateRulesProgressUI();
+      }
+
+      rulesListContainer.addEventListener('change', (e) => {
+        const cb = e.target.closest('[data-rule-check]');
+        if (!cb) return;
+        const ruleNo = Number(cb.dataset.ruleCheck);
+        const total = RULES_DATA.length;
+        const wasAll = readRulesSet.size === total;
+
+        if (cb.checked) readRulesSet.add(ruleNo);
+        else readRulesSet.delete(ruleNo);
+
+        saveReadRules();
+        renderRulesList();
+
+        if (!wasAll && readRulesSet.size === total) {
+          playRetroSound('fanfare');
+          launchPixelConfetti();
+          showToast(`Mantap! Kamu sudah membaca seluruh ${total} Regulasi Gemini Festival!`, 'success');
+        }
+      });
+
+      checkAllRulesBtn.addEventListener('click', () => {
+        const total = RULES_DATA.length;
+        RULES_DATA.forEach((r) => readRulesSet.add(r.no));
+        saveReadRules();
+        renderRulesList();
+        playRetroSound('fanfare');
+        launchPixelConfetti();
+        showToast(`Seluruh ${total} regulasi ditandai sudah dibaca!`, 'success');
+      });
+
+      /* ===================================================================
+         7. DINO MASCOT & BOOTSTRAP
+      =================================================================== */
+      dinoMascot.addEventListener('click', () => {
+        dinoSvg.classList.remove('dino-jumping');
+        void dinoSvg.offsetWidth;
+        dinoSvg.classList.add('dino-jumping');
+        playRetroSound('dino');
+        setTimeout(() => dinoSvg.classList.remove('dino-jumping'), 500);
+      });
+
+      loadReadRules();
+      renderRundown();
+      renderRulesList();
+    })();
+  </script>
+</body>
+</html>
